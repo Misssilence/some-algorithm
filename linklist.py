@@ -127,6 +127,34 @@ def swapPairs(head):
 #         return next
 #     return head
 
+#寻找交点，第一个next
+def search_thenode(l1, l2):
+    l1lenth, l2lenth = 0, 0
+    tmp1,tmp2 = l1, l2
+    while tmp1.next:
+
+        tmp1 = tmp1.next
+        l1lenth += 1
+
+    while tmp2.next:
+        tmp2 = tmp2.next
+        l2lenth += 1
+
+    if l1lenth > l2lenth:
+        for _ in range(l1lenth-l2lenth):
+            l1 = l1.next or None
+    else:
+        for _ in range(l2lenth-l1lenth):
+
+            l2 = l2.next
+
+    while l1 and l2:
+        if l1.next == l2.next:
+            return l1.next
+        else:
+            l1 = l1.next
+            l2 = l2.next
+
 if __name__ == '__main__':
 
     # a = LinkList()
@@ -137,8 +165,10 @@ if __name__ == '__main__':
     # a.insert(2, 'ab')
     b = LinkList()
     b.initlist([1, 2,3,4,5,6,7,8])
+    c = LinkList()
+    c.initlist([5,6 ,7,8 ])
     print(swapPairs(b.head))
-
+    print(search_thenode(c.head, b.head))
 
     # list1 = Node(1, Node(2, Node(4))) #常见的无头节点的单向链表
     # print(list1.next)
