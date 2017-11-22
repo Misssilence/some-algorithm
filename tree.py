@@ -92,15 +92,19 @@ class Tree(object):
     def right_stack(self, root):
         if root == None:
             return
-        stack = []
         node = root
-        while node or stack:
-            while node:
-                stack.append(node)
-                node = node.lchild
-            node = stack.pop()
-            print(node.elem)
-            node = node.rchild
+        stack1 = []
+        stack2 = []
+        stack1.append(node)
+        while stack1:
+            node = stack1.pop()  #讲元素按照后续排列的逆序排列
+            if node.lchild:
+                stack1.append(node.lchild)
+            if node.rchild:
+                stack1.append(node.rchild)
+            stack2.append(node)
+        while stack2:
+            print(stack2.pop().elem)
 
 
 
