@@ -117,7 +117,44 @@ def cube_odd(arr):
     return sum(map(lambda x: x*x*x, new_arr))
 #还可以用try，except 来报错
 
+#20.给你一个数字56789,将这个数字向左旋转得到:67895;
+# 将上述得到的数字保留一位数,然后向左旋转得到:68957;
+# 将上述得到的数字保留两位数,然后向左旋转得到:68579;
+# 将上述得到的数字保留三位数,然后向左旋转得到:68597;
+#
+# 事实上,你不需要在进行保留四位数字进行旋转了,因为保留四位数字,就剩下一位数字了,本身就是最大的;
+#返回旋转过程中的最大数字
+def max_rot(n):
+    max = n
+    arr = list(str(n))
+    for i in range(len(arr)-1):
+        arr.append(arr.pop(i))
+        if int(''.join(arr)) > max:
+            max = int(''.join(arr))
+    return max
 
+# #20 你有一个从1开始的正数序列，但是其中有一个数字是缺失的！
+#
+# 找出缺失的数字,并返回; 如果序列没缺失数字，你应该返回0
+#
+# 简而言之，一个无效的序列（一个非数字字符串）必须返回1，一个正确的无缺的序列必须返回0; 缺失多于一个数字的序列应该返回最小的缺失数字; 缺失一个数字则返回缺少的号码。
+#
+# 请注意，输入可能是随机的顺序。
+def find_missing_number(sequence):
+    if sequence == '':
+        return 0
+    try:
+        seq = map(int, sequence.split(' '))
+        num_seq = [i for i in seq if isinstance(i, int)]
+        complete_seq = [i for i in range(1, max(num_seq)+1)]
+        lost_seq = [i for i in complete_seq if i not in num_seq]
+        if len(lost_seq) == 0:
+            return 0
+        return min(lost_seq)
+    except:
+        return 1
+
+print(find_missing_number(" "))
 if __name__ == '__main__':
     # print(jiecheng(5))
     # op(3)

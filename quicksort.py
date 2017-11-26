@@ -6,7 +6,7 @@ def qsort(seq):
         return []
     else:
         tmp = seq[0]
-        higher = qsort([i for i in seq if i >tmp])
+        higher = qsort([i for i in seq if i > tmp])
         lower = qsort([i for i in seq if i < tmp])
         return lower + [tmp] + higher
 
