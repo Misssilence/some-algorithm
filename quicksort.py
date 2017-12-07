@@ -9,7 +9,7 @@ def qsort(seq):
         higher = qsort([i for i in seq if i > tmp])
         lower = qsort([i for i in seq if i < tmp])
         return lower + [tmp] + higher
-
+#(nlgn)
 
 #冒泡排序，每次对两个数进行比较，然后如果不对就重新排序
 def bubblesort(seq):
@@ -36,13 +36,38 @@ def insert_sort(seq):
 
 
 #list reverse
-list = ['i', 'love', 'you','and','you','love','me']
+list = ['i', 'love', 'you', 'and', 'you', 'love', 'me']
 def list_reverse(list):
     for i in range(len(list)//2):
         list[i], list[len(list)-i-1] = list[len(list)-i-1], list[i]
     print(list)
 
 
+#归并排序，将数组分成两个，然后进行不断的有序合并
+def merge(a, b, tmp=None): #这里注意不要直接用[]
+    if tmp == None:
+        tmp = []
+    if len(a) <= 0 or len(b) <= 0:
+        tmp.extend(a)
+        tmp.extend(b)
+        return tmp
+    if a[0] > b[0]:
+        tmp.append(b[0])
+        del b[0]
+    else:
+        tmp.append(a[0])
+        del a[0]
+    return merge(a, b, tmp)
+
+def merge_sort(seq):
+    if len(seq) <= 1:
+        return seq
+    middle = len(seq)//2
+    left = merge_sort(seq[:middle])
+    right = merge_sort(seq[middle:])
+    return merge(left, right)
+
+
 if __name__ == '__main__':
     # print(bubblesort([10, 2, 4, 8, 80, 9]))
-    print(choose_sort([10, 2, 3, 4, 80, 9, 70]))
+    print(merge_sort([10, 2, 3, 4, 80, 9, 70, 50, 71]))

@@ -256,7 +256,7 @@ s = re.match(r"^\+([1-9]\d) ([1-9]\d) ([1-9]\d{5})", "+12 34 567890")
 
 def order_weight(strng):
     def sort_str(x, y):
-        sub = sum(map(int, list(x)))-sum(map(int,list(y)))
+        sub = sum(map(int, list(x)))-sum(map(int, list(y)))
         if not sub == 0:
             return sub
         return int(x[0])-int(y[0])

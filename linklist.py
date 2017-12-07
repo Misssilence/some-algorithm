@@ -155,6 +155,40 @@ def search_thenode(l1, l2):
             l1 = l1.next
             l2 = l2.next
 
+def reverse(head,newhead):
+    if not head:
+        return None
+    if not head.next:
+        newhead = head
+    else:
+        newhead = reverse(head.next, newhead)
+        head.next.next = head
+        head.next = Node(0)
+    return newhead
+
+# def reverse(head):
+#     nex = head.next.next
+#     pre = Node(0)
+#     head.next.next = pre
+#
+#     while nex.next:
+#         tmp = nex.next
+#         nex.next = head.next
+#         head.next = nex
+#         nex = tmp
+#     tmp = head.next
+#     head.next = nex
+#     nex.next = tmp
+
+    # return (head)
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
 
     # a = LinkList()
@@ -167,8 +201,8 @@ if __name__ == '__main__':
     b.initlist([1, 2,3,4,5,6,7,8])
     c = LinkList()
     c.initlist([5,6 ,7,8 ])
-    print(swapPairs(b.head))
-    print(search_thenode(c.head, b.head))
-
+    # print(swapPairs(b.head))
+    # print(search_thenode(c.head, b.head))
+    print(reverse(b.head, None))
     # list1 = Node(1, Node(2, Node(4))) #常见的无头节点的单向链表
     # print(list1.next)
