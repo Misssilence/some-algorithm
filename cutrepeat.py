@@ -9,8 +9,9 @@ l = ['1', '2', '2', '3', '4', '3', '5']
 #2 列表推导式
 l2 = []
 [l2.append(i) for i in l if i not in l2]
-print(l2.index())
+# print(l2.index())
 
 #fromkey可以创建一个新字典
 # l2 = {}.fromkeys(l).keys()
 # print(type(l2))
+

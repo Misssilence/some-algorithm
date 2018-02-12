@@ -155,7 +155,7 @@ def search_thenode(l1, l2):
             l1 = l1.next
             l2 = l2.next
 
-def reverse(head,newhead):
+def reverse(head, newhead):
     if not head:
         return None
     if not head.next:
